@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+  iam:
+    build: 
+      context: .
+      dockerfile: projects/IAM/Dockerfile
+    image: monopy/iam
+    volumes:
+      - ./projects/IAM:/app
+      - ./common/logging:/app/utils/logging
+    ports:
+      - 8000:8000
+    command: ./manage.py runserver 0.0.0.0:8000
